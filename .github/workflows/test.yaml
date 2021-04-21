@@ -25,9 +25,9 @@ jobs:
     - run: make tests_run
       
     - name: Coverage
-    - run: mkdir -p artifact
-    - run: make coverage > artifact/coverage_outputs.txt
+    - run: make coverage > coverage_outputs.txt
     - uses: actions/upload-artifact@v2
+      if: ${{ always() }}
       with:
         name: coverage_outputs
-        path: ${{ github.workspace }}
+        path: coverage_outputs.txt
