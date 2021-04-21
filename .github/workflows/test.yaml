@@ -13,5 +13,13 @@ jobs:
     steps:
       - name: Say hello world
         run: echo "Welcome to the Github Actions workshop !"
-
-        
+  
+  unit-test:
+    container:
+      image: epitechcontent/epitest-docker
+      vomume:
+        - .:/home
+      steps:
+      - uses: actions/checkout@v2
+      - name: Run unit-tests
+        run: make tests_run
