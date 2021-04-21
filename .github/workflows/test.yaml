@@ -22,7 +22,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run unit-tests
-      run: make tests_run
+    - run: make tests_run
       
     - name: Coverage
-      run: make coverage
+    - run: mkdir -p artifact
+    - run: make coverage > artifact/coverage_outputs.txt
+    - uses: actions/upload-artifact@v2
+      with:
+        name: coverage_outputs
+        path: artifact/
