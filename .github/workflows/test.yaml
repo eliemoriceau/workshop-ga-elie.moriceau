@@ -15,9 +15,12 @@ jobs:
         run: echo "Welcome to the Github Actions workshop !"
   
   unit-test:
-    runs-on: docker
+    runs-on: ubuntu-latest
     container:
       image: epitechcontent/epitest-docker
+      volumes:
+        - /github/workspace:/home/
     steps:
     - uses: actions/checkout@v2
     - name: Run unit-tests
+      run: make tests_run
