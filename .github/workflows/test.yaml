@@ -18,9 +18,6 @@ jobs:
     runs-on: docker
     container:
       image: epitechcontent/epitest-docker
-      volumes:
-        - .:/home
     steps:
     - uses: actions/checkout@v2
     - name: Run unit-tests
-      run: make tests_run
