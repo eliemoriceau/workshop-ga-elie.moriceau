@@ -22,11 +22,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run unit-tests
-    - run: make tests_run
+      run: make tests_run
       
     - name: Coverage
-    - run: make coverage > coverage_outputs.txt
-    - uses: actions/upload-artifact@v2
+      run: make coverage > coverage_outputs.txt
+    - name: artifact
+      uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
         name: coverage_outputs
